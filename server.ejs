@@ -10,4 +10,16 @@ app.use(cookieSession({
   keys: ["random:"]
 }));
 
+app.get('/', (req, res) =>{
+ res.end ("Welcome");
+});
 
+
+
+
+
+
+
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}!`);
+});
