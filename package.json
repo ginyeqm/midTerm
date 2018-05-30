@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ginyeqm/midTerm#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "bootstrap": "^4.1.1",
     "cookie-session": "^2.0.0-beta.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
