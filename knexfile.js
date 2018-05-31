@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       "user": "development",
       "password": "development",
-      "database": "midterm",
+      "database": "midtest",
       "hostname": "localhost",
       "port": 5432,
       "ssl": true

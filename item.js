@@ -9,7 +9,7 @@ var knex = require('knex')({
   }
 });
 
-knex.select('picture', 'price', 'name', 'description').from('items')
+knex.select('picture').from('items')
 .asCallback(function(err, rows) {
   if (err) {
     return console.error(err);
@@ -17,3 +17,4 @@ knex.select('picture', 'price', 'name', 'description').from('items')
       console.log(rows);
     }
  });
+
