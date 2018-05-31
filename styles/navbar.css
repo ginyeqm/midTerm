@@ -1,0 +1,15 @@
+.zlight-submenu {
+ width: 740px;
+ display: block;
+}
+
+.zlight-active {
+  color: white;
+  font-size: 20px;
+  line-height: 13px;"
+}
+.zlight-dropdown {
+  color: rgb(240, 240, 240);
+  font-size: 20px;
+  line-height: 13px;
+}

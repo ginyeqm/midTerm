@@ -1,4 +1,4 @@
-
+const knex = require('knex')
 
 knex.select("*").from("items").where('price')
 .then(function (items) {
