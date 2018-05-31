@@ -10,7 +10,17 @@ app.use(cookieSession({
   keys: ["random:"]
 }));
 
-app.get('/', (req, res) =>{
+var knex = require('knex')({
+  client: 'pg',
+  connection: {
+    host : settings.hostname,
+    user : settings.user,
+    password : settings.password,
+    database : settings.database
+  }
+});
+
+app.get('/', (req, res``) =>{
  res.end ("Welcome");
 });
 

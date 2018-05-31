@@ -1,20 +1,21 @@
-CREATE TABLE itmes (
+CREATE TABLE items (
   id SERIAL PRIMARY KEY,
-  picture VARBINARY(max),
+  picture varchar(255),
   price VARCHAR(50),
   name VARCHAR(50),
   discription varchar(255)
 );
 
-CREATE orders(
+CREATE TABLE orders(
   id SERIAL PRIMARY KEY,
   customer_name VARCHAR(50),
   phone_number VARCHAR(50),
   total_cost VARCHAR(50)
 );
 
-CREATE order_items (
-  id SERIAL PRIMARY,
-  item_id INTEGER REFERENCES item(id),
-  order_id INTEGER REFERENCES order(id)
+CREATE TABLE item_orders (
+  id SERIAL PRIMARY KEY,
+  item_id INTEGER REFERENCES items(id),
+  order_id INTEGER REFERENCES orders(id)
 );
+
