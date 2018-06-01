@@ -40,6 +40,7 @@ exports.seed = function(knex, Promise) {
        { picture:'./picture/OshiSushi/SabaOshi.jpg', price: '15.99' , name: 'Saba Oshi', description:'food dis', category: 'OshiSushi'},
        { picture:'./picture/OshiSushi/SalmonOshi.jpg', price: '12.99' , name: 'Salmon Oshi', description:'food dis', category: 'OshiSushi'},
        { picture:'./picture/OshiSushi/UnagiOshi.jpg', price: '12.99' , name: 'Unagi Oshi', description:'food dis', category: 'OshiSushi'},
+
       ]);
     });
 };
