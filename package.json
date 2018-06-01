@@ -17,12 +17,12 @@
   },
   "homepage": "https://github.com/ginyeqm/midTerm#readme",
   "dependencies": {
+    "ajax": "0.0.4",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.1",
     "cookie-session": "^2.0.0-beta.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "jquery": "^3.3.1",
     "knex": "^0.14.6",
     "pg": "^7.4.3",
     "postgresql": "0.0.1",
