@@ -36,21 +36,17 @@ var database = {};
 app.get("/", (req, res) => {
  knex('items').select('*')
    .then((results) => {
-     // console.log(results);
-     // return results;
      templateVars = {
        data: results
      };
      console.log("help:", templateVars.data);
      res.render("index_page", templateVars);
    });
- // templateVars =
- // {
- //   data: database
- // };
- // console.log("god help me", templateVars.data);
- // res.render("index_page", templateVars);
+
 });
+
+
+
 
 
 app.get("/test", (req, res) => {
