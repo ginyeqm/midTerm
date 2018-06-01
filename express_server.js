@@ -7,8 +7,7 @@ const bodyParser = require("body-parser");
 const knex = require('knex')({
   client: 'pg',
   connection: 'postgres://userone:123@localhost:5432/userone'
-
-})
+});
 
 app.set('view engine', 'ejs');
 
@@ -39,7 +38,7 @@ app.get("/", (req, res) => {
      // console.log(results);
      // return results;
      templateVars = {
-       data: results
+       data: JSON.stringify(results)
      };
      console.log("help:", templateVars.data);
      res.render("index_page", templateVars);
@@ -51,6 +50,19 @@ app.get("/", (req, res) => {
  // console.log("god help me", templateVars.data);
  // res.render("index_page", templateVars);
 });
+
+app.get('/menu_by_category/:category', (req, res) => {
+  knex('items')
+    .select('*')
+    // .where('price < 9.00')
+    .then((results) => {
+      res.json(results);
+    })
+    .catch((err) => {
+      console.log("incomprehensible DB problem:", err);
+      res.status(500).json({'error': 'db ded, fool'});
+    })
+})
 
 
 app.get("/test", (req, res) => {
