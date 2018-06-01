@@ -19,13 +19,13 @@ app.use(session({
   name: 'session',
   keys: ['key']
 }));
+app.use(express.static("public"))
 
 function aquireData(table) {
   // var result = [];
   // knex.connect();
   knex('items').select('*')
     .then((results) => {
-      console.log(results);
       return results;
     });
 }
