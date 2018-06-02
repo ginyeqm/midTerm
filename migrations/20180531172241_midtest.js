@@ -24,4 +24,4 @@ exports.down = function(knex, Promise) {
  return knex.schema.dropTable('items').dropTable('orders').dropTable('item_orders');
 };
 
-
+// talbe.foreign.integer('item_id').references('items-id')

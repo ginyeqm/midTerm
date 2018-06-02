@@ -102,7 +102,7 @@ h1{
 .each-item {
   width:15%;
   height:176px;
-  background-color:white;
+  background-color:black;
   margin-top:30px;
   margin-bottom:30px;
   margin-left:40px;
@@ -117,5 +117,30 @@ h1{
   background-color:black;
 }
 
-/**/
+.mainpage{
+  height:400px;
+  width:800px;
+  margin-left:150px;
+}
+
+.item-pic{
+  height:176px;
+  width:150%;
+}
+
+.item-name{
+  display: inline-block;
+  width:170px;
+  height:20px;
+  color:white;
+}
+
+.item-price{
+  display: inline-block;
+  align-self: right;
+  color:white;
+}
+
+
+/**/*/
 /*main food page*/
