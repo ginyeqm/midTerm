@@ -1,170 +1,94 @@
 $(document).ready(function(){
 
+$('.pop-up').on('click', '.okay', function (event){
+  const itemName = $('.itemName').text();
+  const itemPrice = $('.itemPrice').text();
+  const itemCount = $('.orderNumber').val();
+  const singleTotal = itemPrice * itemCount;
+  const totalPrice = Number($('.total_price').text()) + Number(singleTotal)
 
 
-// $('.each-item').click(function(event) {
-//     event.preventDefault();
-//     window.open($(this).attr("href"), "popupWindow", "width=600,height=600,scrollbars=yes");
-// });
+  const itemDiv = $('<div>').append(`<p>${itemName}</p>`)
+  .append(`<span>${itemPrice}</span>`)
+  .append(`<span>${itemCount}</span>`)
+  .append(`<span>${Math.round(singleTotal*100)/100}</span>`);
+  $('.order_list').prepend(itemDiv);
+  $('.total_price').text(totalPrice);
 
-// $('#appetizer.category').on('click', function(event) {
-//   $.ajax({
-//       url:"/menu/appetizer",
-//       method:"GET",
-//       success: function(data){
-//       console.log(JSON.parse(data));
-//       });
-//     })
-//        // $.get("/menu/appetizer").then(data => {
-//      //   })
-//  })
-
-function processData(data) {
- // for(let i = 0; i < (data.length / 4); i++) {
- //   $('<section>').addClass(`'row'${i}`);
- // }
- data.forEach(function(value, index) {
-   var rowNumber = Math.floor(data.length / 4);
-   // processObj(value, rowNumber);
-   processObj(value);
- });
-}
-
-function processObj(obj) {
-
- var id = obj.id;
- var name = obj.name;
- var price = obj.price;
- var description = obj.description;
- var picture = obj.picture;
- // count 4, put 4 pic into each row
-
- $('.first-row').append(populatePicture(id, picture, name , price)); // create pix
- // $('.first-row').append(populateName(id, name));
- // $('.first-row').append(populatePrice(id, price));
- // $('.first-row').append(populatePicture(id, price));
- // console.log( $('.first-row').append(populatePicture(id, price)));
-
- // // create detail page
- //populateDetailPage(id, name, price, description, picture);
- // $.ajax('#container')
-}
-
-function populatePicture(id, picture, name, price) {
-
- var result = $('<div>');
- var divItemBox = $('<div>').addClass('item-outside-box');
- var imgBox = $('<img>').addClass('item-pic');
-
- var name = $('<span>').text(name).addClass('item-name');
- var price = $('<span>').text('$'+price).addClass('item-price');
-
- imgBox.attr('src', picture);
- imgBox.attr('id', id);
- divItemBox.append(imgBox , name , price);
- result.append(divItemBox);
- result.addClass('col-sm-6 col-md-3 col-lg-3 each-item');
- console.log(price)
-
- return result;
-}
-
-// function populateName(id, name){
-//   var result = $('<div>');
-//   var divItemBox = $('<div>').addClass('itme-outside-box');
-//   var itemName = $('<p>').addClass('item-name')
-// -
-//   itemName.attr('text', name);
-//   itemName.attr('id', id);
-//   divItemBox.append(itemName)
-//   result.append(divItemBox);
-
-//   return result;
-// }
-
-// function populatePrice(id, price){
-
-
-
-// }
-
-  $('.first-row').click(function() {
-    $("#myModal").modal('show');
-  });
-
-
- $('#appetizer').on('click', function(event) {
-   $.get("/menu/appetizer").then(data => {
-    var meals = JSON.parse(data);
-      $('.mainpage').remove();
-      $('.first-row').empty();
-     processData(meals);
-     // console.log(meals);
-     // console.log(typeof meals);
-   });
- });
-
- $('#sashimi').on('click', function(event) {
-   $.get("/menu/sashimi").then(data => {
-     var meals = JSON.parse(data);
-     $('.mainpage').remove();
-     $('.first-row').empty();
-     processData(meals)
-   });
- });
-
- $('#bowl').on('click', function(event) {
-   $.get("/menu/bowl").then(data => {
-     var meals = JSON.parse(data);
-     $('.mainpage').remove();
-     $('.first-row').empty();
-     processData(meals);
-
-   });
- });
-
- $('#oshisushi').on('click', function(event) {
-   $.get("/menu/oshisushi").then(data => {
-     var meals = JSON.parse(data);
-     $('.mainpage').remove();
-     $('.first-row').empty();
-     processData(meals);
-
-   });
- });
-
- $('#roll').on('click', function(event) {
-   $.get("/menu/roll").then(data => {
-     var meals = JSON.parse(data);
-     $('.mainpage').remove();
-     $('.first-row').empty();
-     processData(meals);
-
-   });
- });
-
+  $('.overlay').slideUp();
+  $('.pop-up').empty();
 });
 
-// select category from items where category='appetizer';
 
 
-// var ComposeTweet = $("<div>").addClass("firstDiv");
-//     var picture = $("<img>").addClass("firstPicture").attr("src", tweetData.user.avatars.small);
-//     var title = $("<h1></h1>").addClass("firstTitle").text(tweetData.user.name);
-//     var userAt = $("<h3></h3>").addClass("right").text(tweetData.user.handle);
-//     var PTU = ComposeTweet.append(picture, title, userAt);
-//     //add the image, h1 and h3 elements in the div 1
-//     //append the elements here.
-//     //Div2 Creation
-//     var textArea = $("<div></div>").addClass("firstTextArea").text(tweetData.content.text)
 
-//     var icon = $('<img src="/images/iconlike.png">').addClass("icon")
-//     var icon2 = $('<img src="/images/retweet.png">').addClass("icon")
-//     var icon3 = $('<img src="/images/icon.png">').addClass("icon")
 
-//     var footer = $("<footer></footer>").addClass("bottomText").text(tweetData.created_at)
+  // $.post('/orders', {itemName:nameText, itemPrice:priceText, itemCount:orderNumber.val()}).done(function(data){
+  //   console.log(data)}
+//   $.ajax({
+//     type: 'POST',
+//     url: '/orders',
+//     data: {itemName: $('.itemName').text(),
+//            itemPrice: $('.itemPrice').text(),
+//            itemCount: $('.orderNumber').val()},
+//     success: function(result) {
+//       }
+// });
+//      $('.overlay').slideUp();
+//      $('.pop-up').empty();
+// });
 
-//     var iconFooter = footer.append(icon , icon2, icon3);
-//     var complteArticle = article.append(PTU, textArea , iconFooter);
-//       return complteArticle;
-//   };
+
+
+ $('p').on('click', function(event) {
+    $('.map').addClass('hidden')
+    $('.items_row').removeClass('hidden')
+    $('.items_row').empty();
+   $.get(`/menu/${$(this).attr('data-id')}`).then(data => {
+      var meals = JSON.parse(data);
+      meals.forEach(function(meal){
+        const item = $('<div class="col-md-1">');
+        const img = $(`<img src=${meal.picture}>`);
+        const name = $('<p class="name">').text(meal.name);
+        const price = $('<p class="price">').text(meal.price);
+        item.append(img, name, price);
+        $('.items_row').append(item);
+      })
+   });
+ });
+ $('.main').on('click', function(){
+  $('.map').removeClass('hidden');
+  $('.items_row').addClass('hidden')
+  $('.items_row').empty();
+ })
+
+ $('.items_row').on('click', 'img', function(event){
+    const nameText = $(event.target).parent().children('.name').text();
+    const name = $('<p>').addClass('itemName').text(nameText);
+    const priceText = $(event.target).parent().children('.price').text();
+    const price = $('<p>').addClass('itemPrice').text(priceText);
+    const imgSrc = $(event.target).attr('src');
+    const img = $(`<img src="${imgSrc}">`);
+    const ok = $('<button class="okay">').text('Okay');
+    const input = $('<input type="number" class="orderNumber" value="0">')
+    const cancel = $('<button class="cancel">').text('Cancel')
+    const row = $('<div class="row">');
+    const left = $('<div class="col-md-6">');
+    const right = $('<div class="col-md-6">');
+
+    right.append(name, price, input, ok, cancel);
+    left.append(img);
+    row.append(left, right);
+    $('.pop-up').append(row);
+    $('.overlay').slideDown();
+ })
+
+
+
+
+
+ $('.pop-up').on('click', '.cancel', function(){
+    $('.overlay').slideUp();
+    $('.pop-up').empty();
+ })
+});
