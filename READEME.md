@@ -2,9 +2,12 @@
 
 ## Final Product.
 
-<!-- !["Screenshot of URLs login page"](https://github.com/ginyeqm/Project-TinyApp/blob/master/DOC/urls-login.png)
-!["Screenshot of register page"](https://github.com/ginyeqm/Project-TinyApp/blob/master/DOC/register-page.png)
- -->
+!["Screenshot of MainPage"](https://github.com/ginyeqm/midTerm/master/DOC/mainPage.png)
+!["Screenshot of Category"](https://github.com/ginyeqm/midTerm/master/DOC/Category.png)
+!["Screenshot of SelectingFood"](https://github.com/ginyeqm/midTerm/master/DOC/SelectingFood.png)
+!["Screenshot of FianlOrdering"](https://github.com/ginyeqm/midTerm/master/DOC/finalOrdering.png)
+
+
 
 ## Dependencies
 
@@ -24,7 +27,7 @@
 -Install all dependencies (using the `npm install` command).
 -Run the developmentweb server using the `node express_server.js ` command.
 
-##
+##  Project Description
 
 A food ordering experience for a single restaurant. Hungry clients of this fictitious restaurant can visit its website, select one or more dishes and place an order for pick-up. They will receive a notification when their order is ready.
 
