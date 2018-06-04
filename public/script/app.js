@@ -38,16 +38,6 @@ $('.pop-up').on('click', '.okay', function (event){
 
     orderObject.order[itemName] = {name: itemName, price: itemPrice, quantity: itemCount, tax: Math.round(totalTax*100)/100, singleTotal: Math.round(singleTotal*100)/100}
 
-
-    // let ticket = {
-    // name: itemName,
-    // price: itemPrice,
-    // quantity: itemCount}
-    // orderArray[0] += totalPrice;
-    // orderArray.push(ticket);
-    // console.log("hellothere");
-    // console.log(orderArray);
-
     $('.order_list .list').append(itemDiv);
     $('.total_price').text(Math.round(totalPrice*100)/100);
     $('.overlay').slideUp();
@@ -55,21 +45,6 @@ $('.pop-up').on('click', '.okay', function (event){
   }
 
 });
-
-  // $.post('/orders', {itemName:nameText, itemPrice:priceText, itemCount:orderNumber.val()}).done(function(data){
-  //   console.log(data)}
-//   $.ajax({
-//     type: 'POST',
-//     url: '/orders',
-//     data: {itemName: $('.itemName').text(),
-//            itemPrice: $('.itemPrice').text(),
-//            itemCount: $('.orderNumber').val()},
-//     success: function(result) {
-//       }
-// });
-//      $('.overlay').slideUp();
-//      $('.pop-up').empty();
-// });
 
  $('p').on('click', function(event) {
     $('.map').addClass('hidden')
@@ -88,7 +63,7 @@ $('.pop-up').on('click', '.okay', function (event){
       })
    });
  });
- $('.main').on('click', function(){
+  $('.main').on('click', function(){
   $('.map').removeClass('hidden');
   $('.items_row').addClass('hidden')
   $('.items_row').empty();
@@ -116,21 +91,20 @@ $('.pop-up').on('click', '.okay', function (event){
     $('.overlay').slideDown();
  })
 
-$('.checkOut').on('click', function(){
-  orderObject.total = $('.total_price').text();
-  orderObject.userName = $('#user-name').val();
-  orderObject.userPhone = $('#user-phone-number').val();
-  orderObject.orderId = generateRandomString();
-  // console.log("username test:", $('#user-name').val());
-  // console.log("userphone test: ", $('#user-phone-number').val());
-  $('.order_list .total_price').text(0);
-  $('.order_list .list').empty();
-  $('.order_list input').val('');
+  $('.checkOut').on('click', function(){
+    orderObject.total = $('.total_price').text();
+    orderObject.userName = $('#user-name').val();
+    orderObject.userPhone = $('#user-phone-number').val();
+    orderObject.orderId = generateRandomString();
 
-  $('.overlay').slideDown();
-  $('.pop-up').append('<h1 class="thank">Thank you for ordering.</h1>')
-  const cancel = $('<button class="cancel">').text('Cancel')
-  $('.pop-up').append(cancel);
+    $('.order_list .total_price').text(0);
+    $('.order_list .list').empty();
+    $('.order_list input').val('');
+
+    $('.overlay').slideDown();
+    $('.pop-up').append('<h1 class="thank">Thank you for ordering.</h1>')
+    const cancel = $('<button class="cancel">').text('Cancel')
+    $('.pop-up').append(cancel);
 
 
 
@@ -138,14 +112,10 @@ $('.checkOut').on('click', function(){
     console.log('asd');
   })
 
-
 })
 
-
-
-
  $('.pop-up').on('click', '.cancel', function(){
-    $('.overlay').slideUp();
-    $('.pop-up').empty();
- })
+   $('.overlay').slideUp();
+   $('.pop-up').empty();
+   })
 });
