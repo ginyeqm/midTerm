@@ -2,10 +2,10 @@
 
 ## Final Product.
 
-!["Screenshot of MainPage"](https://github.com/ginyeqm/midTerm/master/DOC/mainPage.png)
-!["Screenshot of Category"](https://github.com/ginyeqm/midTerm/master/DOC/Category.png)
-!["Screenshot of SelectingFood"](https://github.com/ginyeqm/midTerm/master/DOC/SelectingFood.png)
-!["Screenshot of FianlOrdering"](https://github.com/ginyeqm/midTerm/master/DOC/finalOrdering.png)
+!["Screenshot of MainPage"](https://github.com/ginyeqm/midTerm/blob/master/DOC/mainPage.png)
+!["Screenshot of Category"](https://github.com/ginyeqm/midTerm/blob/master/DOC/Category.png)
+!["Screenshot of SelectingFood"](https://github.com/ginyeqm/midTerm/blob/master/DOC/SelectingFood.png)
+!["Screenshot of FianlOrdering"](https://github.com/ginyeqm/midTerm/blob/master/DOC/finalOrdering.png)
 
 
 
