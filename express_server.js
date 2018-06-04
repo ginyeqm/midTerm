@@ -19,7 +19,8 @@ app.use(cookiesSession({
   keys: ['key'],
   maxAge: 60*1000*10 //10mins
 }));
-
+// AC40663532238e5b2113a28111776cc907
+// 517a18d274061e5a21f51bd4327d6506
 var accountSid = 'AC40663532238e5b2113a28111776cc907'; // Your Account SID from www.twilio.com/console
 var authToken = '517a18d274061e5a21f51bd4327d6506';   // Your Auth Token from www.twilio.com/console
 
@@ -47,12 +48,11 @@ var client = new twilio(accountSid, authToken);
 // };
 
 function sendText(resultStr, customerPhone) {
-  console.log('whhaat');
 // do something to orderObj to get only name & price
 // send text to owner
 client.messages.create({
   body: resultStr,
-  to: '+17789534883',  // Text this number
+  to: '+17809323406',  // Text this number
   from: '+15876000387' // From a valid Twilio number
 }).then((message) => console.log(message.sid)).done();
 
@@ -100,7 +100,7 @@ app.get("/test", (req, res) => {
    // .then((data) => {console.log(data)})
    // .catch(ex => res.json({ error: ex.message }));
    console.log(req.session);
-   sendText("test", "+17789534883");
+   sendText("test", "+17809323406");
 
   res.end("this is test page");
 

@@ -12,17 +12,25 @@ function generateRandomString() {
 var orderObject ={order: {}, total:0};
 $('.pop-up').on('click', '.okay', function (event){
   const itemName = $('.itemName').text();
+  const dollar = $('<span>$</span>');
   const itemPrice = $('.itemPrice').text();
+  const multiple = $('<span>X</span>');
   const itemCount = $('.orderNumber').val();
   const singleTotal = itemPrice * itemCount;
-  const totalTax = Number(singleTotal) * 0.12
+  const dollar1 = $('<span>$</span>');
+  const totalTax = Number(singleTotal) * 0.12;
+  const dollar2 = $('<span>$</span>');
   const totalPrice = Number($('.total_price').text()) + Number(singleTotal) - (totalTax);
 
   const itemDiv = $('<div>').append(`<p>${itemName}</p>`)
-  .append(`<span>${itemPrice}</span>`)
-  .append(`<span>${itemCount}</span>`)
-  .append(`<span>${Math.round(totalTax*100)/100}</span>`)
-  .append(`<span>${Math.round(singleTotal*100)/100}</span>`);
+  .append(dollar)
+  .append(`<span class='itemP'>${itemPrice}</span>`)
+  .append(multiple)
+  .append(`<span class='itemC'>${itemCount}</span>`)
+  .append(dollar1)
+  .append(`<span class='tax'>${Math.round(totalTax*100)/100}</span>`)
+  .append(dollar2)
+  .append(`<span class='single_price'>${Math.round(singleTotal*100)/100}</span>`);
 
   orderObject.order[itemName] = {name: itemName, price: itemPrice, quantity: itemCount, tax: Math.round(totalTax*100)/100, singleTotal: Math.round(singleTotal*100)/100}
 
@@ -36,8 +44,7 @@ $('.pop-up').on('click', '.okay', function (event){
   // console.log("hellothere");
   // console.log(orderArray);
 
-
-  $('.order_list').prepend(itemDiv);
+  $('.order_list .list').append(itemDiv);
   $('.total_price').text(Math.round(totalPrice*100)/100);
   $('.overlay').slideUp();
   $('.pop-up').empty();
@@ -68,8 +75,9 @@ $('.pop-up').on('click', '.okay', function (event){
         const item = $('<div class="col-md-1">');
         const img = $(`<img src=${meal.picture}>`);
         const name = $('<p class="name">').text(meal.name);
+        const dollar = $('<span>$</span>');
         const price = $('<p class="price">').text(meal.price);
-        item.append(img, name, price);
+        item.append(img, name, dollar, price);
         $('.items_row').append(item);
       })
    });
@@ -84,6 +92,7 @@ $('.pop-up').on('click', '.okay', function (event){
     const nameText = $(event.target).parent().children('.name').text();
     const name = $('<p>').addClass('itemName').text(nameText);
     const priceText = $(event.target).parent().children('.price').text();
+    const dollar = $('<span>$</span>');
     const price = $('<p>').addClass('itemPrice').text(priceText);
     const imgSrc = $(event.target).attr('src');
     const img = $(`<img src="${imgSrc}">`);
@@ -94,7 +103,7 @@ $('.pop-up').on('click', '.okay', function (event){
     const left = $('<div class="col-md-6">');
     const right = $('<div class="col-md-6">');
 
-    right.append(name, price, input, ok, cancel);
+    right.append(name, dollar, price, input, ok, cancel);
     left.append(img);
     row.append(left, right);
     $('.pop-up').append(row);
@@ -102,18 +111,28 @@ $('.pop-up').on('click', '.okay', function (event){
  })
 
 $('.checkOut').on('click', function(){
-  console.log('asd');
   orderObject.total = $('.total_price').text();
   orderObject.userName = $('#user-name').val();
   orderObject.userPhone = $('#user-phone-number').val();
   orderObject.orderId = generateRandomString();
   // console.log("username test:", $('#user-name').val());
   // console.log("userphone test: ", $('#user-phone-number').val());
-  console.log(orderObject);
+  $('.order_list .total_price').text(0);
+  $('.order_list .list').empty();
+  $('.order_list input').val('');
+
+  $('.overlay').slideDown();
+  $('.pop-up').append('<h1 class="thank">Thank you for ordering.</h1>')
+  const cancel = $('<button class="cancel">').text('Cancel')
+  $('.pop-up').append(cancel);
+
+
 
   $.post('/checkout', {order: orderObject}).done(function(result){
-    console.log(result);
+    console.log('asd');
   })
+
+
 })
 
 

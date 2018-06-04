@@ -61,6 +61,10 @@ body {
   width: 200px;
 }
 
+.items_row .price {
+  display: inline;
+}
+
 .items_row {
   color: white;
 }
@@ -68,6 +72,17 @@ body {
 .order_list {
   height: 100%;
   background: black;
+}
+
+.order_list div, span {
+  color: white;
+  font-size: 17px;
+}
+
+.order_list .total_price {
+  display: inline;
+  margin-right: 70%;
+  font-size:22px;
 }
 
 .overlay {
@@ -88,13 +103,45 @@ body {
   background-image: url(../picture/itemBackground.jpg);
 }
 
+.pop-up .itemPrice{
+  display: inline;
+  margin-left: 0;
+}
+
+.pop-up span {
+  width: 10px;
+  color: white;
+  font-size: 20px;
+}
+
+.pop-up .orderNumber {
+  width: 20%;
+  margin-right: 70%;
+}
+
+.pop-up .thank {
+  color: white;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  height: 90%;
+  padding: 25%;
+}
+
+.pop-up .cancel {
+  width: 100%;
+}
+
 .hidden {
   display: none;
 }
 
 .order_list div span{
-  margin:5%;
   font-size:23px;
+}
+
+.itemP, .tax, .single_price, .itemC{
+  margin-right: 10%;
 }
 
 .checkOut{
