@@ -11,43 +11,49 @@ function generateRandomString() {
 
 var orderObject ={order: {}, total:0};
 $('.pop-up').on('click', '.okay', function (event){
-  const itemName = $('.itemName').text();
-  const dollar = $('<span>$</span>');
-  const itemPrice = $('.itemPrice').text();
-  const multiple = $('<span>X</span>');
-  const itemCount = $('.orderNumber').val();
-  const singleTotal = itemPrice * itemCount;
-  const dollar1 = $('<span>$</span>');
-  const totalTax = Number(singleTotal) * 0.12;
-  const dollar2 = $('<span>$</span>');
-  const totalPrice = Number($('.total_price').text()) + Number(singleTotal) - (totalTax);
-
-  const itemDiv = $('<div>').append(`<p>${itemName}</p>`)
-  .append(dollar)
-  .append(`<span class='itemP'>${itemPrice}</span>`)
-  .append(multiple)
-  .append(`<span class='itemC'>${itemCount}</span>`)
-  .append(dollar1)
-  .append(`<span class='tax'>${Math.round(totalTax*100)/100}</span>`)
-  .append(dollar2)
-  .append(`<span class='single_price'>${Math.round(singleTotal*100)/100}</span>`);
-
-  orderObject.order[itemName] = {name: itemName, price: itemPrice, quantity: itemCount, tax: Math.round(totalTax*100)/100, singleTotal: Math.round(singleTotal*100)/100}
+  if($('.orderNumber').val() === '0') {
+    alert('No quantity???')
+  } else {
+    const itemName = $('.itemName').text();
+    const dollar = $('<span>$</span>');
+    const itemPrice = $('.itemPrice').text();
+    const multiple = $('<span>X</span>');
+    const itemCount = $('.orderNumber').val();
+    const singleTotal = itemPrice * itemCount;
+    const dollar1 = $('<span>$</span>');
+    const totalTax = Number(singleTotal) * 0.12;
+    const dollar2 = $('<span>$</span>');
+    const totalPrice = Number($('.total_price').text()) + Number(singleTotal) - (totalTax);
 
 
-  // let ticket = {
-  // name: itemName,
-  // price: itemPrice,
-  // quantity: itemCount}
-  // orderArray[0] += totalPrice;
-  // orderArray.push(ticket);
-  // console.log("hellothere");
-  // console.log(orderArray);
+    const itemDiv = $('<div>').append(`<p>${itemName}</p>`)
+    .append(dollar)
+    .append(`<span class='itemP'>${itemPrice}</span>`)
+    .append(multiple)
+    .append(`<span class='itemC'>${itemCount}</span>`)
+    .append(dollar1)
+    .append(`<span class='tax'>${Math.round(totalTax*100)/100}</span>`)
+    .append(dollar2)
+    .append(`<span class='single_price'>${Math.round(singleTotal*100)/100}</span>`);
 
-  $('.order_list .list').append(itemDiv);
-  $('.total_price').text(Math.round(totalPrice*100)/100);
-  $('.overlay').slideUp();
-  $('.pop-up').empty();
+    orderObject.order[itemName] = {name: itemName, price: itemPrice, quantity: itemCount, tax: Math.round(totalTax*100)/100, singleTotal: Math.round(singleTotal*100)/100}
+
+
+    // let ticket = {
+    // name: itemName,
+    // price: itemPrice,
+    // quantity: itemCount}
+    // orderArray[0] += totalPrice;
+    // orderArray.push(ticket);
+    // console.log("hellothere");
+    // console.log(orderArray);
+
+    $('.order_list .list').append(itemDiv);
+    $('.total_price').text(Math.round(totalPrice*100)/100);
+    $('.overlay').slideUp();
+    $('.pop-up').empty();
+  }
+
 });
 
   // $.post('/orders', {itemName:nameText, itemPrice:priceText, itemCount:orderNumber.val()}).done(function(data){

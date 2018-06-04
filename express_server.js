@@ -52,8 +52,8 @@ function sendText(resultStr, customerPhone) {
 // send text to owner
 client.messages.create({
   body: resultStr,
-  to: '+17809323406',  // Text this number
-  from: '+15876000387' // From a valid Twilio number
+  to: '+17789534883',  // Text this number
+  from: '+15876000387' // From a valid Twilio number // From a valid Twilio number
 }).then((message) => console.log(message.sid)).done();
 
 // send text message to customer
@@ -92,19 +92,19 @@ function createMessage(data) {
 //    res.render("item_page")
 // })
 
-app.get("/test", (req, res) => {
-  req.session = null;
-  // req.session.test = '10';
-    // knex('items').where({category: 'appetizer'}).select('id')
-   // .then((data) => res.json(data))
-   // .then((data) => {console.log(data)})
-   // .catch(ex => res.json({ error: ex.message }));
-   console.log(req.session);
-   sendText("test", "+17809323406");
+// app.get("/test", (req, res) => {
+//   req.session = null;
+//   // req.session.test = '10';
+//     // knex('items').where({category: 'appetizer'}).select('id')
+//    // .then((data) => res.json(data))
+//    // .then((data) => {console.log(data)})
+//    // .catch(ex => res.json({ error: ex.message }));
+//    console.log(req.session);
+//    sendText("test", "+17789534883");
 
-  res.end("this is test page");
+//   res.end("this is test page");
 
-});
+// });
 
 app.get("/menu/appetizer", (req, res) => {
   knex.select('itemId','name','price', 'description','picture').from('items').where('category', 'appetizer')
