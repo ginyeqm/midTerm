@@ -1,27 +1,47 @@
 $(document).ready(function(){
 
+function generateRandomString() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklnmopqrstuvwxya0123456789";
+    for(var i = 0; i < 6; i++){
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+};
+
+var orderObject ={order: {}, total:0};
 $('.pop-up').on('click', '.okay', function (event){
   const itemName = $('.itemName').text();
   const itemPrice = $('.itemPrice').text();
   const itemCount = $('.orderNumber').val();
   const singleTotal = itemPrice * itemCount;
-  const totalPrice = Number($('.total_price').text()) + Number(singleTotal)
-
+  const totalTax = Number(singleTotal) * 0.12
+  const totalPrice = Number($('.total_price').text()) + Number(singleTotal) - (totalTax);
 
   const itemDiv = $('<div>').append(`<p>${itemName}</p>`)
   .append(`<span>${itemPrice}</span>`)
   .append(`<span>${itemCount}</span>`)
+  .append(`<span>${Math.round(totalTax*100)/100}</span>`)
   .append(`<span>${Math.round(singleTotal*100)/100}</span>`);
-  $('.order_list').prepend(itemDiv);
-  $('.total_price').text(totalPrice);
 
+  orderObject.order[itemName] = {name: itemName, price: itemPrice, quantity: itemCount, tax: Math.round(totalTax*100)/100, singleTotal: Math.round(singleTotal*100)/100}
+
+
+  // let ticket = {
+  // name: itemName,
+  // price: itemPrice,
+  // quantity: itemCount}
+  // orderArray[0] += totalPrice;
+  // orderArray.push(ticket);
+  // console.log("hellothere");
+  // console.log(orderArray);
+
+
+  $('.order_list').prepend(itemDiv);
+  $('.total_price').text(Math.round(totalPrice*100)/100);
   $('.overlay').slideUp();
   $('.pop-up').empty();
 });
-
-
-
-
 
   // $.post('/orders', {itemName:nameText, itemPrice:priceText, itemCount:orderNumber.val()}).done(function(data){
   //   console.log(data)}
@@ -37,8 +57,6 @@ $('.pop-up').on('click', '.okay', function (event){
 //      $('.overlay').slideUp();
 //      $('.pop-up').empty();
 // });
-
-
 
  $('p').on('click', function(event) {
     $('.map').addClass('hidden')
@@ -83,6 +101,20 @@ $('.pop-up').on('click', '.okay', function (event){
     $('.overlay').slideDown();
  })
 
+$('.checkOut').on('click', function(){
+  console.log('asd');
+  orderObject.total = $('.total_price').text();
+  orderObject.userName = $('#user-name').val();
+  orderObject.userPhone = $('#user-phone-number').val();
+  orderObject.orderId = generateRandomString();
+  // console.log("username test:", $('#user-name').val());
+  // console.log("userphone test: ", $('#user-phone-number').val());
+  console.log(orderObject);
+
+  $.post('/checkout', {order: orderObject}).done(function(result){
+    console.log(result);
+  })
+})
 
 
 
