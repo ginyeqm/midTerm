@@ -11,7 +11,15 @@
 
 ## Dependencies
 
--Node.js ,Express ,EJS ,body-parser ,Knex ,bootstrap ,pg ,postgresql ,sass ,twilio
+- Node.js
+- Express
+- EJS
+- body-parser
+- Knex
+- bootstrap
+- pg
+- postgresql
+- twilio
 
 
 ## Getting Started
