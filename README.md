@@ -23,8 +23,8 @@
 
 
 ## Getting Started
--Install all dependencies (using the `npm install` command).
--Run the developmentweb server using the `node express_server.js ` command.
+- Install all dependencies (using the `npm install` command).
+- Run the developmentweb server using the `node express_server.js ` command.
 
 ##  Project Description
 
